@@ -5,9 +5,10 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 type ButtonProps = {
   label: string;
   iconType: 'calendar' | 'pets';
+  onPress?: () => void;
 };
 
-export default function Button({ label, iconType }: ButtonProps) {
+export default function Button({ label, iconType, onPress }: ButtonProps) {
     return (
       <View
         style={[
@@ -15,10 +16,10 @@ export default function Button({ label, iconType }: ButtonProps) {
         ]}>
         <Pressable
           style={[styles.button, { backgroundColor: '#fff' }]}
-          onPress={() => alert('You pressed a button.')}>
-          {iconType === 'calendar' && <AntDesign name="calendar" size={24} color="black" />}
-          {iconType === 'pets' && <MaterialIcons name="pets" size={24} color="black" />}
-          <Text style={[styles.buttonLabel, { color: '#25292e' }]}>{label}</Text>
+          onPress={onPress ? onPress : () => alert('You pressed a button.')}>
+          {iconType === 'calendar' && <AntDesign name="calendar" size={24} color="#2D79CB" />}
+          {iconType === 'pets' && <MaterialIcons name="pets" size={24} color="#2D79CB" />}
+          <Text style={[styles.buttonLabel, { color: '#2D79CB' }]}>{label}</Text>
         </Pressable>
       </View>
     );
